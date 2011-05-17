@@ -94,3 +94,5 @@ au BufNewFile,BufRead *.rl      setf ragel
 :map <silent> <C-N> :tabnext<CR>
 :map <silent> <C-P> :tabprevious<CR>
 
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
