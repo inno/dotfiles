@@ -82,9 +82,7 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 :colorscheme default
 
 au BufNewFile,BufRead *.rl      setf ragel
-
-" Puppet support
-au BufNewFile,BufRead *.pp      setf ruby
+au BufNewFile,BufRead *.pp      setf puppet
 
 " For some reason my default Leader is undefined...
 :let g:Perl_MapLeader='\'
