@@ -94,5 +94,8 @@ au BufNewFile,BufRead *.rl      setf ragel
 :map <silent> <C-N> :tabnext<CR>
 :map <silent> <C-P> :tabprevious<CR>
 
+" Don't flush buffers if they change
+:set bufhidden=hide
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
