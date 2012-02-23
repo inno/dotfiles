@@ -40,7 +40,7 @@ endfunction
 :map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
 autocmd FileType c set omnifunc=ccomplete#Complete
-:set tags=./tags,/usr/tags
+:set tags=./tags;/usr/tags;/
 
 :set encoding=utf-8
 
