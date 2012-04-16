@@ -83,6 +83,7 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 au BufNewFile,BufRead *.rl      setf ragel
 au BufNewFile,BufRead *.pp      setf puppet
+au! BufRead,BufNewFile *.json set filetype=json
 
 " For some reason my default Leader is undefined...
 :let g:Perl_MapLeader='\'
