@@ -99,5 +99,9 @@ au! BufRead,BufNewFile *.json set filetype=json
 " Don't flush buffers if they change
 :set bufhidden=hide
 
+" Tab completion of vim items
+:set wildmode=longest,list,full
+:set wildmenu
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
