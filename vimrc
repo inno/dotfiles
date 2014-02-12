@@ -103,5 +103,8 @@ au! BufRead,BufNewFile *.json set filetype=json
 :set wildmode=longest,list,full
 :set wildmenu
 
+" No automagic folding!
+let g:pymode_folding = 0
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
