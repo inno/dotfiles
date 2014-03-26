@@ -62,7 +62,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " For with to debug
 :autocmd FileType c map <F6> <Esc>:!gdb<CR>
 
-
 " Teh automagic F7 button
 " To test
 ":autocmd FileType perl map <F7> <Esc>:!perl -cw %<CR>
@@ -88,8 +87,6 @@ au! BufRead,BufNewFile *.json set filetype=json
 " For some reason my default Leader is undefined...
 :let g:Perl_MapLeader='\'
 
-" force plugins on
-:filetype plugin on
 
 " Ctrl-based tabbing ftw
 :map <silent> <C-E> :tabnew<CR>:E<CR>
@@ -103,8 +100,22 @@ au! BufRead,BufNewFile *.json set filetype=json
 :set wildmode=longest,list,full
 :set wildmenu
 
-" No automagic folding!
 let g:pymode_folding = 0
+let g:pymode_paths = ['/opt/duo/trustedpath-itest/lib/python','/opt/duo/trustedpath/lib/python']
 
-call pathogen#runtime_append_all_bundles()
+" Syntastic language validation utilities
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jshint']
+
+let syntastic_python_checkers = ['flake8']
+let g:loaded_syntastic_python_pylint_checker = 1
+
+:filetype off
+
+:set tags=./tags;$HOME/tags;/
+
+call pathogen#infect()
 call pathogen#helptags()
+
+" force plugins on
+:filetype plugin indent on
