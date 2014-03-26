@@ -117,5 +117,8 @@ let g:loaded_syntastic_python_pylint_checker = 1
 call pathogen#infect()
 call pathogen#helptags()
 
+" Nice idea, but this takes forever!
+let g:pymode_rope_complete_on_dot = 0
+
 " force plugins on
 :filetype plugin indent on
