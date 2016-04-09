@@ -76,8 +76,8 @@ endfunction
 " No need to make a backup before overwriting
 :set nobackup
 
-" Use ack instead of grep
-:set grepprg=ack
+" Use silversearcher instead of grep
+:set grepprg=ag
 
 autocmd FileType c set omnifunc=ccomplete#Complete
 
