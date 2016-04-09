@@ -5,7 +5,6 @@
 :set hlsearch
 :set so=6
 :syntax on
-:set guifont=Monospace\ 8
 :set guioptions=agimrLt
 :set nocp
 
