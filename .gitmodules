@@ -25,3 +25,6 @@
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "bundle/vim-luna"]
+	path = bundle/vim-luna
+	url = git://github.com/Pychimp/vim-luna.git
