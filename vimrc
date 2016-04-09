@@ -77,7 +77,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 :set t_Co=8
 :set t_md=
-:colorscheme default
 
 au BufNewFile,BufRead *.rl      setf ragel
 au BufNewFile,BufRead *.pp      setf puppet
@@ -115,6 +114,8 @@ let g:loaded_syntastic_python_pylint_checker = 1
 
 call pathogen#infect()
 call pathogen#helptags()
+
+:colorscheme luna
 
 " Nice idea, but this takes forever!
 let g:pymode_rope_complete_on_dot = 0
