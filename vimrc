@@ -33,10 +33,6 @@ endfunction
 
 :set nobackup
 :set grepprg=ack
-:map <F5> :call ToggleFlag("spell")<CR>
-
-" Internal lookup
-:map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
 autocmd FileType c set omnifunc=ccomplete#Complete
 :set tags=./tags;/usr/tags;/
@@ -57,18 +53,20 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 :autocmd BufRead *.html,<HTML> set autoindent
 
 
-" Teh automagic F6 button!
-" For with to debug
+" Internal lookup
+:map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+" Enable/disable spell checking
+:map <F5> :call ToggleFlag("spell")<CR>
+
+" Debugging based on file type
 :autocmd FileType c map <F6> <Esc>:!gdb<CR>
 
-" Teh automagic F7 button
-" To test
+" Testing based on file type
 ":autocmd FileType perl map <F7> <Esc>:!perl -cw %<CR>
 :autocmd FileType make map <F7> <Esc>:make test<CR>
 
-
-" Teh automagic F8 button!
-" To compile/execute
+" Compilation/execution based on file type
 ":autocmd FileType perl map <F8> <Esc>:!perl %<CR>
 :autocmd FileType lua map <F8> <Esc>:!lua %<CR>
 :autocmd FileType make map <F8> <Esc>:w<CR>:make -f %<CR>
