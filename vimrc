@@ -131,11 +131,6 @@ au! BufRead,BufNewFile *.json set filetype=json
 " For some reason my default Leader is undefined...
 :let g:Perl_MapLeader='\'
 
-" Ctrl-based tabbing ftw
-:map <silent> <C-E> :tabnew<CR>:E<CR>
-:map <silent> <C-N> :tabnext<CR>
-:map <silent> <C-P> :tabprevious<CR>
-
 " Don't flush buffers if they change
 :set bufhidden=hide
 
