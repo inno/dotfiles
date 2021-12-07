@@ -145,6 +145,11 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
 " Syntastic language validation utilities
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Syntastic language validation utilities
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let syntastic_python_checkers = ['flake8']
