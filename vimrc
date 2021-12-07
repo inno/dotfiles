@@ -152,5 +152,12 @@ let g:loaded_syntastic_python_pylint_checker = 1
 
 :filetype off
 
-" force plugins on
+autocmd BufWritePost * GitGutter
+let g:gitgutter_highlight_lines = 1
+
+" Custom commands
+:command GG GitGutterToggle
+
+
 :filetype plugin indent on
+" git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/pack/airblade/start/vim-gitgutter
