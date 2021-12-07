@@ -74,12 +74,6 @@ au BufNewFile,BufRead *.rl      setf ragel
 au BufNewFile,BufRead *.pp      setf puppet
 au! BufRead,BufNewFile *.json set filetype=json
 
-" For some reason my default Leader is undefined...
-:let g:Perl_MapLeader='\'
-
-" Don't flush buffers if they change
-:set bufhidden=hide
-
 " Tab completion of vim items
 :set wildmode=longest,list,full
 :set wildmenu
