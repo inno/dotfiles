@@ -82,12 +82,10 @@ au! BufRead,BufNewFile *.json set filetype=json
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-let g:pymode_folding = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" Syntastic language validation utilities
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let syntastic_python_checkers = ['flake8']
