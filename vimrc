@@ -71,7 +71,6 @@
 
 " Syntax/filetype definition
 au BufNewFile,BufRead *.rl      setf ragel
-au BufNewFile,BufRead *.pp      setf puppet
 
 " Tab completion of vim items
 :set wildmode=longest,list,full
