@@ -53,20 +53,8 @@
 :set laststatus=2
 :set statusline=%(%F%m%r%h%w%)\ \ \ %=[\%03.3b/0x\%02.2B]\ \ \ %(%l,%v\ \ \ [%p%%]%)
 
-function! ToggleFlag(option)
-    if ( !exists('b:tf_o') )
-        exec ('let b:tf_o = 1')
-        exec ('setlocal '.a:option)
-    else
-        exec ('setlocal no'.a:option)
-        exec ('unlet b:tf_o')
-    endif
-endfunction
-
 
 :set grepprg=ag  " Use silversearcher instead of grep
-
-autocmd FileType c set omnifunc=ccomplete#Complete
 
 " map / for visual mode to work like / in normal mode
 :vmap / y/<C-R>"<CR>
@@ -80,25 +68,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 :autocmd BufRead *.html,<HTML> set softtabstop=2
 :autocmd BufRead *.html,<HTML> set shiftwidth=2
 :autocmd BufRead *.html,<HTML> set autoindent
-
-" Internal lookup
-:map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-" Enable/disable spell checking
-:map <F5> :call ToggleFlag("spell")<CR>
-
-" Debugging based on file type
-:autocmd FileType c map <F6> <Esc>:!gdb<CR>
-
-" Testing based on file type
-":autocmd FileType perl map <F7> <Esc>:!perl -cw %<CR>
-:autocmd FileType make map <F7> <Esc>:make test<CR>
-
-" Compilation/execution based on file type
-":autocmd FileType perl map <F8> <Esc>:!perl %<CR>
-:autocmd FileType lua map <F8> <Esc>:!lua %<CR>
-:autocmd FileType make map <F8> <Esc>:w<CR>:make -f %<CR>
-:autocmd FileType c map <F8> <Esc>:w<CR>:make<CR>
 
 " Force 8 bit color
 :set t_Co=8
