@@ -150,7 +150,5 @@ let g:loaded_syntastic_python_pylint_checker = 1
 
 :filetype off
 
-:set tags=./tags;/usr/tags;$HOME/tags;/
-
 " force plugins on
 :filetype plugin indent on
