@@ -155,8 +155,6 @@ let g:loaded_syntastic_python_pylint_checker = 1
 
 :set tags=./tags;/usr/tags;$HOME/tags;/
 
-:colorscheme luna
-
 " Nice idea, but this takes forever!
 let g:pymode_rope_complete_on_dot = 0
 
