@@ -12,12 +12,6 @@
 :set softtabstop=4  " Columns per tab key press
 :set tabstop=4  " Tab character width
 
-" No vi-compatibility
-" compatible
-:set nocompatible
-
-:set backspace=2
-
 :set smartindent
 :set expandtab  " Convert tab keys to spaces
 
