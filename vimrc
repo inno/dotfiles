@@ -78,9 +78,6 @@ au! BufRead,BufNewFile *.json set filetype=json
 :set wildmode=longest,list,full
 :set wildmenu
 
-" Highlight lines over 80 characters long
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
