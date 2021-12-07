@@ -1,0 +1,32 @@
+[user]
+    name = "Clif Bratcher"
+    email = "cebratcher@gmail.com"
+
+[alias]
+    ci = commit
+    co = checkout
+    st = status
+    df = diff
+
+    cherry-stack = "!echo 'Paste a log --oneline list here:'; perl -lne 'last unless $_; push @lines, $_}{for (reverse @lines){/^(\\w+)/ && print qq|cherry-picking $1| && `git cherry-pick $1`}'"
+    br = "!git checkout -b $1 && git push --set-upstream origin "
+    currentbranch = "!git branch | grep '*' | cut -d' ' -f2"
+    bug = "!perl -e \"print uc(qx/git currentbranch/)\""
+    cb = "!git checkout -b $1 origin/$1;#"
+    branchdiff = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    delete = "!git branch -d $1 && git push origin :"
+    github = "!open https://github.com/`git remote -v | grep '^origin' | grep '(push)$' | perl -lne '/github.com:(.+).git/ && print $1'`/tree/`git currentbranch`"
+
+[color]
+    ui = auto
+
+[core]
+    editor = vim
+    pager = less -R
+    excludesfile = ~/.gitignore_global
+
+[push]
+    default = simple
+
+[hub]
+    protocol = https
