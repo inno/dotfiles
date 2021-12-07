@@ -91,6 +91,8 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 " Enable listchars
 :set list
+" Enable line numbers
+:set number
 
 " Special indentation for html
 :autocmd BufRead *.html,<HTML> set tabstop=2
