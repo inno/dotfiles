@@ -142,9 +142,6 @@ au! BufRead,BufNewFile *.json set filetype=json
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-let g:pymode_folding = 0
-let g:pymode_paths = ['/opt/duo/trustedpath-itest/lib/python','/opt/duo/trustedpath/lib/python']
-
 " Syntastic language validation utilities
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
@@ -154,9 +151,6 @@ let g:loaded_syntastic_python_pylint_checker = 1
 :filetype off
 
 :set tags=./tags;/usr/tags;$HOME/tags;/
-
-" Nice idea, but this takes forever!
-let g:pymode_rope_complete_on_dot = 0
 
 " force plugins on
 :filetype plugin indent on
