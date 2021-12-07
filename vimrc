@@ -155,9 +155,6 @@ let g:loaded_syntastic_python_pylint_checker = 1
 
 :set tags=./tags;/usr/tags;$HOME/tags;/
 
-call pathogen#infect()
-call pathogen#helptags()
-
 :colorscheme luna
 
 " Nice idea, but this takes forever!
