@@ -1,17 +1,16 @@
 :set visualbell
 :set smartindent
 :set autoindent
+:set incsearch  " Realtime search highlighting
+:set hlsearch  " Highlight search matches
+:set scrolloff=6  " Screen lines to keep above and below the cursor
+:syntax on  " Syntax highlighting
+:set nobackup  " No need to make a backup before overwriting
+:set encoding=utf-8
 
-" Realtime search highlighting
-:set incsearch
-" Highlight search matches
-:set hlsearch
-
-" Screen lines to keep above and below the cursor
-:set scrolloff=6
-
-" Syntax highlighting
-:syntax on
+:set shiftwidth=4  " Auto-indent tab width
+:set softtabstop=4  " Columns per tab key press
+:set tabstop=4  " Tab character width
 
 " No vi-compatibility
 " compatible
@@ -19,13 +18,8 @@
 
 :set backspace=2
 
-" Auto-indent tab width
-:set shiftwidth=4
-" Columns per tab key press
-:set softtabstop=4
-" Tab character width
-:set tabstop=4
 :set smartindent
+:set expandtab  " Convert tab keys to spaces
 
 " c = Auto-wrap comments using textwidth, inserting the current comment
 " r = Automatically insert the current comment leader after hitting <Enter> in Insert mode.
@@ -33,8 +27,6 @@
 " q = Allow formatting of comments with 'gq'.
 :set formatoptions=c,r,o,q
 
-" Convert tab keys to spaces
-:set expandtab
 
 " a = Allow GUI to access visually selected items
 " g = Make menu items that are not active grey
@@ -71,26 +63,17 @@ function! ToggleFlag(option)
     endif
 endfunction
 
-" No need to make a backup before overwriting
-:set nobackup
 
-" Use silversearcher instead of grep
-:set grepprg=ag
+:set grepprg=ag  " Use silversearcher instead of grep
 
 autocmd FileType c set omnifunc=ccomplete#Complete
-
-:set encoding=utf-8
 
 " map / for visual mode to work like / in normal mode
 :vmap / y/<C-R>"<CR>
 
-" flag tab indentation and trailing whitespace
-:set listchars=tab:>-,trail:!
-
-" Enable listchars
-:set list
-" Enable line numbers
-:set number
+:set listchars=tab:>-,trail:!  " flag tab indentation and trailing whitespace
+:set list  " Enable listchars
+:set number  " Enable line numbers
 
 " Special indentation for html
 :autocmd BufRead *.html,<HTML> set tabstop=2
