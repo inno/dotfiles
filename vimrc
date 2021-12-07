@@ -33,8 +33,6 @@
 " q = Allow formatting of comments with 'gq'.
 :set formatoptions=c,r,o,q
 
-:inoremap # X#
-
 " Convert tab keys to spaces
 :set expandtab
 
@@ -144,7 +142,7 @@ au! BufRead,BufNewFile *.json set filetype=json
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-" Syntastic language validation utilities
+let g:pymode_folding = 0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -162,7 +160,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-:filetype off
 
 autocmd BufWritePost * GitGutter
 let g:gitgutter_highlight_lines = 1
