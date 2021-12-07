@@ -1,8 +1,7 @@
 # Installation
 
-    OSX: `brew install chezmoi`
-    See also: https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md
+OSX: `brew install chezmoi`
+See also: https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md
 
-    * Coming soon *
-
-# Usage
+`chezmoi --init --ssh inno`
+`chezmoi apply`
