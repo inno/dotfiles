@@ -72,7 +72,6 @@
 " Syntax/filetype definition
 au BufNewFile,BufRead *.rl      setf ragel
 au BufNewFile,BufRead *.pp      setf puppet
-au! BufRead,BufNewFile *.json set filetype=json
 
 " Tab completion of vim items
 :set wildmode=longest,list,full
