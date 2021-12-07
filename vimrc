@@ -150,14 +150,23 @@ let g:syntastic_javascript_checkers = ['eslint']
 let syntastic_python_checkers = ['flake8']
 let g:loaded_syntastic_python_pylint_checker = 1
 
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 :filetype off
 
 autocmd BufWritePost * GitGutter
 let g:gitgutter_highlight_lines = 1
 
 " Custom commands
+:command Sy SyntasticToggleMode
 :command GG GitGutterToggle
 
-
 :filetype plugin indent on
+
+
+" git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/pack/bundles/start/syntastic
 " git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/pack/airblade/start/vim-gitgutter
