@@ -192,11 +192,6 @@ function venv_dance () {
     set +e
 }
 
-function dftr () {
-    url=https://dftr.duosec.org/${"$(git config remote.origin.url | cut -d: -f2)":0:-4}/-/tree/$(git branch --show-current --remote)
-    open $url
-}
-
 function project () {
     project_path="$HOME/src/$1"
     if ! [[ -d "$project_path" ]]; then
