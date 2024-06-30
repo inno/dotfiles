@@ -11,7 +11,6 @@
 :set shiftwidth=4  " Auto-indent tab width
 :set softtabstop=4  " Columns per tab key press
 :set tabstop=4  " Tab character width
-
 :set smartindent
 :set expandtab  " Convert tab keys to spaces
 
@@ -20,7 +19,6 @@
 " o = Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
 " q = Allow formatting of comments with 'gq'.
 :set formatoptions=c,r,o,q
-
 
 " a = Allow GUI to access visually selected items
 " g = Make menu items that are not active grey
@@ -65,7 +63,6 @@
 
 " Force 256 bit color
 :set t_Co=256
-
 :colorscheme molokai
 
 " Syntax/filetype definition
@@ -80,16 +77,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_javascript_checkers = ['eslint']
-let syntastic_python_checkers = ['flake8']
-let g:loaded_syntastic_python_pylint_checker = 1
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_check_on_open = 1
+let g:syntastic_json_checkers = ['eslint']
 let g:syntastic_lua_checkers = ["luac", "luacheck"]
 let g:syntastic_lua_luacheck_args = "--no-unused-args --allow-defined"
-let g:syntastic_lua_luacheck_args = "--no-unused-args --allow-defined"
-
+let g:syntastic_python_checkers = ['flake8', 'bandit', 'dmypy']
+let g:syntastic_python_bandit_args = '-c .bandit.yaml'
+let g:syntastic_xml_checkers = ['xmllint']
+let g:syntastic_yaml_checkers = ['yamllint']
+let g:loaded_syntastic_python_pylint_checker = 1
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -106,6 +103,3 @@ let g:gitgutter_highlight_lines = 1
 
 :filetype plugin indent on
 autocmd BufRead,BufNewFile *.cki set filetype=jsonc
-
-" git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/pack/bundles/start/syntastic
-" git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/pack/airblade/start/vim-gitgutter
