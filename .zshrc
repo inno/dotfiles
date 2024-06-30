@@ -250,3 +250,5 @@ if [ -f '/Users/clif/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/clif/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/clif/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
