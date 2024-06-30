@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$PATH:$HOME/Library/Python/2.7/bin
+export PATH=$HOME/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 
 if ! [[ -d "$HOME/.oh-my-zsh" ]]; then
     echo "################################################"
@@ -21,7 +20,7 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="af-magic"
-ZSH_THEME="agnoster"
+ZSH_THEME="mh" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -96,6 +95,7 @@ plugins=(
   macos
   pep8
   python
+  rsync
   ssh-agent
   sudo
   zsh-navigation-tools
@@ -119,9 +119,10 @@ fi
 # export LANG=en_US.UTF-8
 
 export EDITOR='vim'
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+export PYTHONDONTWRITEBYTECODE=1
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -134,9 +135,9 @@ alias sb="source bin/activate"
 alias virtualenv="echo 'virtualenv is dead, use venv instead'; #"
 
 # Dynamically build venv aliases
-for py_path in $(ls -d /usr/local/opt/python@3*); do
-    py_version="${${py_path//./}#*@}"
-    alias "venv$py_version"="$py_path/bin/python3 -m venv"
+for py_path in $(ls -d /opt/homebrew/bin/python3* | grep -v '-'); do
+    py_version="${py_path#*python}"
+    alias "venv${py_version//./}"="$py_path -m venv"
 done
 
 function venv_cleanup () {
@@ -239,5 +240,13 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+eval "$(brew shellenv)"
+
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/clif/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/clif/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/clif/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/clif/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
