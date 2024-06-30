@@ -14,5 +14,7 @@ __pycache__
 .Spotlight-V100
 .Trashes
 .coverage
+.dmypy.json
 Icon?
 Thumbs.db
+pyvenv.cfg

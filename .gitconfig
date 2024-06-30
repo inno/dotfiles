@@ -1,6 +1,6 @@
 [user]
     name = "Clif Bratcher"
-    email = "cebratcher@gmail.com"
+	email = inno@users.noreply.github.com
 
 [alias]
     ci = commit
@@ -27,6 +27,14 @@
 
 [push]
     default = simple
+    autoSetupRemote = True
 
 [hub]
     protocol = https
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
