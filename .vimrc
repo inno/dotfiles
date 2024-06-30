@@ -63,11 +63,10 @@
 :autocmd BufRead *.html,<HTML> set shiftwidth=2
 :autocmd BufRead *.html,<HTML> set autoindent
 
-" Force 8 bit color
-:set t_Co=8
+" Force 256 bit color
+:set t_Co=256
 
-" Disable bold colors
-:set t_md=
+:colorscheme molokai
 
 " Syntax/filetype definition
 au BufNewFile,BufRead *.rl      setf ragel
@@ -86,6 +85,10 @@ let g:syntastic_javascript_checkers = ['eslint']
 let syntastic_python_checkers = ['flake8']
 let g:loaded_syntastic_python_pylint_checker = 1
 let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_check_on_open = 1
+let g:syntastic_lua_checkers = ["luac", "luacheck"]
+let g:syntastic_lua_luacheck_args = "--no-unused-args --allow-defined"
+let g:syntastic_lua_luacheck_args = "--no-unused-args --allow-defined"
 
 
 let g:syntastic_always_populate_loc_list = 1
@@ -102,7 +105,7 @@ let g:gitgutter_highlight_lines = 1
 :command GG GitGutterToggle
 
 :filetype plugin indent on
-
+autocmd BufRead,BufNewFile *.cki set filetype=jsonc
 
 " git clone https://github.com/vim-syntastic/syntastic.git ~/.vim/pack/bundles/start/syntastic
 " git clone https://github.com/airblade/vim-gitgutter.git ~/.vim/pack/airblade/start/vim-gitgutter
