@@ -1,15 +1,11 @@
-" vim-bootstrap 2023-12-19 01:48:31
-
-"*****************************************************************************
-"" Vim-Plug core
-"*****************************************************************************
-let vimplug_exists=expand('~/./autoload/plug.vim')
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 let curl_exists=expand('curl')
 
-let g:vim_bootstrap_editor = "" " nvim or vim
+let g:vim_bootstrap_editor = "nvim"
 let g:vim_bootstrap_frams = ""
-let g:vim_bootstrap_langs = "python"
+let g:vim_bootstrap_langs = "c,html,javascript,perl,python"
 let g:vim_bootstrap_theme = "molokai"
+" let g:vim_bootstrap_theme = "carbonfox"
 
 if !filereadable(vimplug_exists)
   if !executable(curl_exists)
@@ -25,7 +21,7 @@ if !filereadable(vimplug_exists)
 endif
 
 " Required:
-call plug#begin(expand('~/./plugged'))
+call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
@@ -43,6 +39,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :GBrowse
 Plug 'tomasr/molokai'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'Shatur/neovim-ayu'
+Plug 'hashivim/vim-terraform'
 
 
 if isdirectory('/opt/homebrew/opt/fzf')
@@ -69,6 +68,36 @@ Plug 'honza/vim-snippets'
 "" Custom bundles
 "*****************************************************************************
 
+" c
+Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+Plug 'ludwig/split-manpage.vim'
+
+
+" html
+"" HTML Bundle
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gko/vim-coloresque'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+
+
+" javascript
+"" Javascript Bundle
+Plug 'jelera/vim-javascript-syntax'
+
+
+" lua
+"" Lua Bundle
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'xolox/vim-lua-inspect'
+
+
+" perl
+"" Perl Bundle
+Plug 'vim-perl/vim-perl'
+Plug 'c9s/perlomni.vim'
+
+
 " python
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
@@ -88,7 +117,6 @@ call plug#end()
 " Required:
 filetype plugin indent on
 
-
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
@@ -98,34 +126,72 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set ttyfast
 
-"" Fix backspace indent
-set backspace=indent,eol,start
+" set visualbell
+" set autoindent
+set scrolloff=3  " Screen lines to keep above and below the cursor
+set nobackup  " No need to make a backup before overwriting
 
 "" Tabs. May be overridden by autocmd rules
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
+set shiftwidth=4  " Auto-indent tab width
+set softtabstop=4  " Columns per tab key press
+set tabstop=4  " Tab character width
+set smartindent
+set expandtab  " Convert tab keys to spaces
+
+" c = Auto-wrap comments using textwidth, inserting the current comment
+" r = Automatically insert the current comment leader after hitting <Enter> in Insert mode.
+" o = Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+" q = Allow formatting of comments with 'gq'.
+set formatoptions=c,r,o,q
+
+" a = Allow GUI to access visually selected items
+" g = Make menu items that are not active grey
+" i = Use a Vim icon
+" m = Enable menu bar
+" r = Right-hand scrollbar is always present
+" L = Left-hand scrollbar is present when there is a vertically split window.
+" t = Include tearoff menu items
+set guioptions=agimrLt
+
+" f = use '(3 of 5)' instead of '(file 3 of 5)'
+" i = use '[noeol]' instead of '[Incomplete last line]'
+" l = use '999L, 888C' instead of '999 lines, 888 characters'
+" n = use '[New]' instead of '[New File]'
+" x = use '[dos]' instead of '[dos format]', '[unix]' instead of '[unix format]' and '[mac]' instead of '[mac format]'.
+" t = truncate file message at the start if it is too long to fit on the command-line, '<' will appear in the left most column.
+" T = truncate other messages in the middle if they are too long to fit on the command line.  '...' will appear in the middle.
+" o = overwrite message for writing a file with subsequent message for reading a file (useful for ':wn' or when 'autowrite' on)
+" O = message for reading a file overwrites any previous message. Also for quickfix message (e.g., ':cn').
+" I = don't give the intro message when starting Vim
+set shortmess=filnxtToOI
+
+"" Searching
+set hlsearch  " Highlight search matches
+set incsearch  " Realtime search highlighting
+set ignorecase
+set smartcase
+
+set fileformats=unix,dos,mac
+
+"" Fix backspace indent
+set backspace=indent,eol,start
 
 "" Map leader to ,
 let mapleader=','
 
 "" Enable hidden buffers
-set hidden
+" set hidden
+" set statusline=%(%F%m%r%h%w%)\ \ \ %=[\%03.3b/0x\%02.2B]\ \ \ %(%l,%v\ \ \ [%p%%]%)
 
-"" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-set fileformats=unix,dos,mac
 
 if exists('$SHELL')
     set shell=$SHELL
 else
     set shell=/bin/sh
 endif
+
+" map / for visual mode to work like / in normal mode
+vmap / y/<C-R>"<CR>
 
 " session management
 let g:session_directory = "~/.session"
@@ -138,18 +204,22 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 let no_buffers_menu=1
 colorscheme molokai
+" colorscheme carbonfox
 
-
-" Better command line completion 
-set wildmenu
+" Special indentation for html
+autocmd BufRead *.html,<HTML> set tabstop=2
+autocmd BufRead *.html,<HTML> set softtabstop=2
+autocmd BufRead *.html,<HTML> set shiftwidth=2
+autocmd BufRead *.html,<HTML> set autoindent
+au BufNewFile,BufRead *.rl      setf ragel
+au BufNewFile,BufRead *. tf     setf terraform
+" au FileType python setlocal formatprg=autopep8\ -
 
 " mouse support
 set mouse=a
 
 set mousemodel=popup
 set t_Co=256
-set guioptions=egmrti
-" set gfn=Monospace\ 10
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -165,7 +235,7 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
+
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -173,7 +243,7 @@ else
       " set term=xterm-256color
     endif
   endif
-  
+
 endif
 
 
@@ -184,9 +254,6 @@ endif
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
-
-set scrolloff=3
-
 
 "" Status bar
 set laststatus=2
@@ -211,9 +278,17 @@ if exists("*fugitive#statusline")
 endif
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_json_checkers = ['eslint']
+let g:syntastic_python_checkers = ['flake8', 'bandit', 'dmypy']
+" let g:syntastic_python_checkers = ['flake8', 'bandit', 'mypy']
+let g:syntastic_xml_checkers = ['xmllint']
+let g:syntastic_yaml_checkers = ['yamllint']
+let g:loaded_syntastic_python_pylint_checker = 1
 
 " vim-airline
 let g:airline_theme = 'powerlineish'
@@ -223,6 +298,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "*****************************************************************************
 "" Abbreviations
@@ -241,6 +320,8 @@ cnoreabbrev Qall qall
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 
+autocmd BufWritePost * GitGutter
+let g:gitgutter_highlight_lines = 1
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
@@ -336,8 +417,9 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-"" fzf.vim
+"" fzf.vim - Tab completion of vim items
 set wildmode=list:longest,list:full
+set wildmenu " Better command line completion 
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
@@ -456,7 +538,6 @@ let g:airline#extensions#virtualenv#enabled = 1
 let python_highlight_all = 1
 
 
-
 "*****************************************************************************
 "*****************************************************************************
 
@@ -466,7 +547,7 @@ if filereadable(expand("~/.rc.local"))
 endif
 
 "*****************************************************************************
-"" Convenience variables
+" Convenience variables
 "*****************************************************************************
 
 " vim-airline
@@ -513,6 +594,8 @@ else
   let g:airline_symbols.linenr = '⭡'
 endif
 
-syntax on
+syntax on  " Syntax highlighting
 set ruler
-set number
+set number  " Enable line numbers
+set listchars=tab:>-,trail:!  " flag tab indentation and trailing whitespace
+set list  " Enable listchars
