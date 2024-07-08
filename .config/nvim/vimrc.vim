@@ -42,6 +42,7 @@ Plug 'tomasr/molokai'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'Shatur/neovim-ayu'
 Plug 'hashivim/vim-terraform'
+Plug 'ryanoasis/vim-devicons'
 
 
 if isdirectory('/opt/homebrew/opt/fzf')
@@ -90,6 +91,7 @@ Plug 'jelera/vim-javascript-syntax'
 "" Lua Bundle
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-lua-inspect'
+let g:loaded_luainspect = 1
 
 
 " perl
@@ -203,7 +205,7 @@ let g:session_command_aliases = 1
 "" Visual Settings
 "*****************************************************************************
 let no_buffers_menu=1
-colorscheme molokai
+silent! colorscheme molokai
 " colorscheme carbonfox
 
 " Special indentation for html
